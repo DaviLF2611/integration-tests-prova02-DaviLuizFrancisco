@@ -9,7 +9,7 @@ describe('ServeRest API', () => {
   let idProduto = '';
   let idProduto2 = '';
   let emailUsuario = '';
-  const descProdutoDuplicado = faker.commerce.productName();
+  const descProdutoDuplicado = `${faker.commerce.productName()}-${faker.string.uuid()}`;
   const password = faker.string.numeric(9);
   const p = pactum;
   const rep = SimpleReporter;
@@ -82,7 +82,7 @@ describe('ServeRest API', () => {
         .withHeaders('Authorization', token)
         .withHeaders('monitor', false)
         .withJson({
-          nome: faker.commerce.productName(),
+          nome: `${faker.commerce.productName()}-${faker.string.uuid()}`,
           preco: 500,
           descricao: faker.commerce.productDescription(),
           quantidade: 10
@@ -111,7 +111,7 @@ describe('ServeRest API', () => {
         .withHeaders('Authorization', token)
         .withHeaders('monitor', false)
         .withJson({
-          nome: faker.commerce.productName(),
+          nome: `${faker.commerce.productName()}-${faker.string.uuid()}`,
           preco: 1600,
           descricao: faker.commerce.productDescription(),
           quantidade: 30

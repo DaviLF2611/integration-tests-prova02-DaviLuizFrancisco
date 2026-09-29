@@ -3,20 +3,20 @@ import { spec } from 'pactum';
 describe('Open Library e HTTPBin', () => {
   it('GET - consulta uma obra na Open Library', async () => {
     await spec()
-      .get('https://openlibrary.org/works/OL45883W.json')
+      .get('https://openlibrary.org/works/OL45804W.json')
       .expectStatus(200)
       .expectJsonLike({
-        key: '/works/OL45883W',
-        title: 'Fantastic Mr. FOX',
+        key: '/works/OL45804W',
+        title: 'Fantastic Mr Fox'
       });
   });
 
   it('GET - consulta as edições de uma obra na Open Library', async () => {
     await spec()
-      .get('https://openlibrary.org/works/OL45883W/editions.json')
+      .get('https://openlibrary.org/works/OL45804W/editions.json')
       .expectStatus(200)
       .expectJsonLike({
-        links: { work: '/works/OL45883W' },
+        links: { work: '/works/OL45804W' }
       });
   });
 
@@ -27,7 +27,7 @@ describe('Open Library e HTTPBin', () => {
       .withJson({ title: 'Meu livro de teste', author: 'Davi' })
       .expectStatus(200)
       .expectJsonLike({
-        json: { title: 'Meu livro de teste', author: 'Davi' },
+        json: { title: 'Meu livro de teste', author: 'Davi' }
       });
   });
 
@@ -38,7 +38,7 @@ describe('Open Library e HTTPBin', () => {
       .withJson({ title: 'Título atualizado' })
       .expectStatus(200)
       .expectJsonLike({
-        json: { title: 'Título atualizado' },
+        json: { title: 'Título atualizado' }
       });
   });
 
@@ -49,7 +49,7 @@ describe('Open Library e HTTPBin', () => {
       .expectStatus(200)
       .expectJsonLike({
         json: { title: 'Livro enviado', year: 2026 },
-        url: 'https://httpbin.org/anything/livros',
+        url: 'https://httpbin.org/anything/livros'
       });
   });
 });
